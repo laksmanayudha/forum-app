@@ -31,4 +31,4 @@ export {
   ActionType,
   setIsPreloadActionCreator,
   asyncPreloadProccess,
-}
+};

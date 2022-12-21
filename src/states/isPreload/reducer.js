@@ -1,7 +1,7 @@
-import { ActionType } from "./action";
+import { ActionType } from './action';
 
 function isPreloadReducer(isPreload = true, action = {}) {
-  switch(action.type) {
+  switch (action.type) {
     case ActionType.SET_IS_PRELOAD:
       return action.payload.isPreload;
     default:

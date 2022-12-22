@@ -1,11 +1,12 @@
 import React from 'react';
+import LoginPage from './pages/LoginPage';
 import './styles/app.css';
 
 function App() {
   return (
-    <div>
-      hello world
-    </div>
+    <main>
+      <LoginPage />
+    </main>
   );
 }
 

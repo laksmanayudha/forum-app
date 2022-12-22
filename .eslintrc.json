@@ -20,6 +20,7 @@
     "rules": {
         "linebreak-style": "off",
         "no-alert": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off"
     }
 }

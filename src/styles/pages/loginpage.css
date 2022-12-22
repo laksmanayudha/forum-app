@@ -1,0 +1,69 @@
+@import url('../app.css');
+
+.login-page {
+  display: flex;
+  height: 100vh;
+}
+
+.logo {
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 100%;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page__hero {
+  background-color: var(--blue-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 16px 16px 0;
+}
+
+.login-page__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page__hero,
+.login-page__main {
+  flex: 1;
+}
+
+.login-page__main article {
+  padding: 1em;
+  width: 100%;
+  max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.headbar {
+  text-align: center;
+}
+
+.headbar__subtitle {
+  color: var(--grey);
+}
+
+.dont-have-account {
+  margin-top: 1em;
+}
+
+.to-login {
+  color: var(--blue-1);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 797.98px) {
+  .login-page__hero{
+    display: none;
+  }
+}

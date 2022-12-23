@@ -1,5 +1,6 @@
 @import url('../app.css');
 
+.register-page,
 .login-page {
   display: flex;
   height: 100vh;
@@ -16,6 +17,7 @@
   align-items: center;
 }
 
+.register-page__hero,
 .login-page__hero {
   background-color: var(--blue-1);
   display: flex;
@@ -24,17 +26,21 @@
   border-radius: 0 16px 16px 0;
 }
 
+.register-page__main,
 .login-page__main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.register-page__hero,
+.register-page__main,
 .login-page__hero,
 .login-page__main {
   flex: 1;
 }
 
+.register-page__main article,
 .login-page__main article {
   padding: 1em;
   width: 100%;
@@ -52,18 +58,21 @@
   color: var(--grey);
 }
 
+.already-have-account,
 .dont-have-account {
   margin-top: 1em;
 }
 
+.to-register,
 .to-login {
   color: var(--blue-1);
   text-decoration: underline;
   cursor: pointer;
 }
 
-@media (max-width: 797.98px) {
-  .login-page__hero{
+@media (max-width: 768px) {
+  .register-page__hero,
+  .login-page__hero {
     display: none;
   }
 }

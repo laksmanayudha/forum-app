@@ -7,15 +7,15 @@ import {
 } from '../components/Form';
 import '../styles/pages/login-register-page.css';
 
-function LoginPage() {
+function RegisterPage() {
   return (
-    <section className="login-page">
-      <div className="login-page__hero">
+    <section className="register-page">
+      <div className="register-page__hero">
         <div className="logo">
           <h1>FA</h1>
         </div>
       </div>
-      <aside className="login-page__main">
+      <aside className="register-page__main">
         <article>
           <header className="headbar">
             <h2 className="headbar__title">Forum App</h2>
@@ -23,13 +23,14 @@ function LoginPage() {
           </header>
           <FormContainer>
             <Form>
+              <Input type="text" placeholder="Your Name" />
               <Input type="text" placeholder="Your Email" />
               <Input type="password" placeholder="Your Password" />
-              <FormSubmit label="Login" />
+              <FormSubmit label="Register" />
             </Form>
-            <p className="dont-have-account">
-              Don&lsquo;t have an account?
-              <span className="to-register"> register</span>
+            <p className="already-have-account">
+              Already have an account?
+              <span className="to-login"> login</span>
             </p>
           </FormContainer>
         </article>
@@ -38,4 +39,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

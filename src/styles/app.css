@@ -62,11 +62,19 @@ small {
   font-size: 0.8rem;
 }
 
-@media (max-width: 991.98px) {}
+.app-container {
+  display: flex;
+}
 
-@media (max-width: 797.98px) {}
+.app-container main {
+  flex: 1;
+}
 
-@media (max-width: 575.98px) {
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 640px) {
   :root {
     font-size: 12px;
   }

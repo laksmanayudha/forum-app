@@ -1,0 +1,9 @@
+@import url('../app.css');
+
+.threads-page {
+  display: flex;
+}
+
+.thread-lists {
+  flex: 1;
+}

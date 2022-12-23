@@ -9,7 +9,7 @@ import '../styles/pages/login-register-page.css';
 
 function RegisterPage() {
   return (
-    <section className="register-page">
+    <section className="register-page page">
       <div className="register-page__hero">
         <div className="logo">
           <h1>FA</h1>

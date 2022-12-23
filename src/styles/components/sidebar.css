@@ -71,8 +71,8 @@
 
   .sidebar-lists {
     flex-direction: row;
-    justify-content: space-evenly;
-    /* gap: 1em; */
+    justify-content: center;
+    gap: 1em;
     padding: 1em 0;;
   }
 

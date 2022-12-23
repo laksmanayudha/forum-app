@@ -4,7 +4,8 @@ import { FiLogOut, FiSearch } from 'react-icons/fi';
 import { MdOutlineLeaderboard } from 'react-icons/md';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 // import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+// import RegisterPage from './pages/RegisterPage';
+import ThreadsPage from './pages/ThreadsPage';
 import { SideBar, SidebarNavItem, SidebarNavs } from './components/SideBar';
 import './styles/app.css';
 
@@ -23,7 +24,7 @@ function App() {
       <main>
         {/* <LoginPage /> */}
         {/* <RegisterPage /> */}
-        <RegisterPage />
+        <ThreadsPage />
       </main>
     </div>
   );

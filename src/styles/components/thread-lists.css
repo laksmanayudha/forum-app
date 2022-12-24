@@ -1,0 +1,155 @@
+@import url(../app.css);
+
+/* thread */
+.thread-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  width: 100%;
+  max-width: 850px;
+}
+
+.thread {
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  padding: 1em;
+}
+
+.thread__votes {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+.thread__data-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.thread__title-desc {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.thread__title-desc h3 a {
+  color: var(--black);
+}
+
+.thread__title-desc h3 a:hover {
+  text-decoration: underline;
+}
+
+.thread__etc {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.thread__etc span {
+  display: inline-block;
+}
+
+.thread__etc svg {
+  width: 20px;
+  height: 20px;
+}
+
+.username {
+  color: var(--blue-1);
+}
+
+.thread--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* category */
+.thread-categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.thread-category {
+  background-color: transparent;
+  border: 1px solid var(--blue-2);
+  border-radius: 4px;
+  color: var(--blue-2);
+  cursor: default;
+  padding: .3em 1em;
+}
+
+.thread-category:hover {
+  outline: 1px solid var(--blue-2);
+}
+
+.category--active {
+  background-color: var(--blue-2);
+  color: white;
+}
+
+/* votes */
+.votes {
+  display: flex;
+  flex-direction: column;
+}
+
+.up-votes svg,
+.down-votes svg {
+  width: 5em;
+  height: 5em;
+}
+
+.up-votes:hover svg path,
+.down-votes:hover svg path {
+  stroke-width: 15;
+}
+
+.up-votes svg path,
+.down-votes svg path {
+  stroke-width: 10;
+  stroke: var(--blue-1);
+}
+
+.down-votes svg {
+  transform: rotate(180deg);
+}
+
+.votes-container {
+  position: relative;
+  cursor: default;
+}
+
+.up-votes .votes-value,
+.down-votes .votes-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.down-votes .votes-value {
+  margin-top: -20px;
+}
+
+.up-votes .votes-value {
+  margin-top: 10px;
+}
+
+.votes--voted svg path {
+  fill: var(--blue-1);
+}
+
+.votes--voted .votes-value {
+  color: var(--white);
+}

@@ -1,10 +1,12 @@
 @import url('../app.css');
 
 .sidebar {
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-right: 1px solid var(--divider);
+  z-index: 999;
 }
 
 .sidebar-logo {
@@ -34,7 +36,11 @@
 .sidebar-lists-item {
   display: inline-block;
   padding: 0 2em;
-  border-right: 1px solid transparent;
+  border-right: 1px solid var(--white);
+}
+
+.sidebar-lists-item a {
+  color: var(--black);
 }
 
 .sidebar-lists-item h4 {
@@ -63,6 +69,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 999;
   }
 
   .sidebar-logo {
@@ -72,7 +79,7 @@
   .sidebar-lists {
     flex-direction: row;
     justify-content: center;
-    gap: 1em;
+    gap: 2em;
     padding: 1em 0;;
   }
 
@@ -86,11 +93,18 @@
 
   .sidebar--active {
     border: none;
-    background-color: var(--blue-1);
+    background-color: var(--black);
     border-radius: 50%;
   }
 
   .sidebar--active h4 svg {
     color: var(--white);
+  }
+}
+
+@media (max-width: 1286px) {
+  .sidebar-logo h3,
+  .sidebar-lists-item__label {
+    display: none;
   }
 }

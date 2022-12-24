@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function ThreadCategoryContainer({ children }) {
   return (
@@ -7,5 +8,13 @@ function ThreadCategoryContainer({ children }) {
     </div>
   );
 }
+
+ThreadCategoryContainer.propTypes = {
+  children: PropTypes.node,
+};
+
+ThreadCategoryContainer.defaultProps = {
+  children: [],
+};
 
 export default ThreadCategoryContainer;

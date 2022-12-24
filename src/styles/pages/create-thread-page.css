@@ -1,0 +1,52 @@
+@import url('../app.css');
+
+.create-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+}
+
+.create-page-background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  max-width: 768px;
+  padding: 2em;
+}
+
+.close-input {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-input button {
+  color: var(--white);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-input button svg {
+  transform: scale(2);
+  stroke: var(--white);
+}
+
+.create-input {
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 2em;
+}

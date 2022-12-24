@@ -18,6 +18,7 @@ function ThreadItem({
   isDownVote,
   isUpVote,
   totalComments,
+  truncate,
 }) {
   return (
     <article className="thread" key={id}>
@@ -35,10 +36,10 @@ function ThreadItem({
       </div>
       <div className="thread__data-container">
         <div className="thread__title-desc">
-          <h4 className="thread--truncate">
+          <h4 className={`${truncate ? 'thread--truncate' : ''}`}>
             <Link to="/">{ title }</Link>
           </h4>
-          <div className="thread--truncate">
+          <div className={`${truncate ? 'thread--truncate' : ''}`}>
             { body }
           </div>
         </div>
@@ -86,6 +87,11 @@ ThreadItem.propTypes = {
   isDownVote: PropTypes.bool.isRequired,
   isUpVote: PropTypes.bool.isRequired,
   totalComments: PropTypes.number.isRequired,
+  truncate: PropTypes.bool,
+};
+
+ThreadItem.defaultProps = {
+  truncate: false,
 };
 
 export default ThreadItem;

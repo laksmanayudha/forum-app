@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ThreadItem from './ThreadItem';
 
-function ThreadLists({ threads }) {
+function ThreadLists({ threads, threadTruncate }) {
   return (
     <div className="thread-lists">
-      {threads.map((thread) => (<ThreadItem {...thread} key={thread.id} />))}
+      {threads.map((thread) => (
+        <ThreadItem
+          {...thread}
+          key={thread.id}
+          truncate={threadTruncate}
+        />
+      ))}
     </div>
   );
 }
@@ -26,6 +32,11 @@ const threadShape = {
 
 ThreadLists.propTypes = {
   threads: PropTypes.arrayOf(PropTypes.shape(threadShape)).isRequired,
+  threadTruncate: PropTypes.bool,
+};
+
+ThreadLists.defaultProps = {
+  threadTruncate: false,
 };
 
 export default ThreadLists;

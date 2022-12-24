@@ -29,6 +29,38 @@
   color: var(--grey);
 }
 
+.create-thread-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--divider);
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+.create-thread {
+  display: flex;
+  align-items: center;
+  gap: .3em;
+  cursor: pointer;
+  background-color: var(--blue-1);
+  border: 1px solid var(--blue-1);
+  border-radius: 4px;
+  padding: .8em 1.5em;
+}
+
+.create-thread,
+.create-thread-label {
+  color: var(--white);
+}
+
+.create-thread svg {
+  stroke: var(--white);
+}
+
+.create-thread:hover {
+  background-color: var(--blue-1-older);
+}
+
 @media (max-width: 1024px) {
   .threads-page {
     display: flex;
@@ -47,6 +79,7 @@
 
   .thread-side-contents {
     padding: 2.5em 2.5em 1em 2.5em;
+    border-left: none;
     border-bottom: 1px solid var(--divider);
   }
 
@@ -56,5 +89,25 @@
 
   .categories-content {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .create-thread {
+    position: fixed;
+    z-index: 1000;
+    bottom: 70px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .create-thread svg {
+    transform: scale(2);
+  }
+
+  .create-thread-label {
+    display: none;
   }
 }

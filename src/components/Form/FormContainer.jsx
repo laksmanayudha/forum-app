@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function FormContainer({ children }) {
   return (
@@ -8,5 +8,13 @@ function FormContainer({ children }) {
     </div>
   );
 }
+
+FormContainer.propTypes = {
+  children: PropTypes.node,
+};
+
+FormContainer.defaultProps = {
+  children: [],
+};
 
 export default FormContainer;

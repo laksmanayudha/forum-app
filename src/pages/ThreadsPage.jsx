@@ -1,15 +1,18 @@
 import React from 'react';
+import { FiPlus } from 'react-icons/fi';
+import { useNavigate, Outlet } from 'react-router-dom';
 import { Input } from '../components/Form';
 import { ThreadCategory, ThreadCategoryContainer, ThreadLists } from '../components/Threads';
 import { UserProfile } from '../components/UserProfile';
 import '../styles/pages/threads-page.css';
 
 function ThreadsPage() {
+  const navigate = useNavigate();
   const threads = [
     {
       id: 'thread-1',
       title: 'Thread Pertama rule is a formatting or documenting rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'python',
       createdAt: '2022-12-21T07:00:00.000Z',
       ownerId: 'john_doe',
@@ -20,7 +23,7 @@ function ThreadsPage() {
     {
       id: 'thread-2',
       title: 'Thread Kedua rule is a formatting or documenting is a formatting or documenting rule is a formatting or documenting  ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-12-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -31,7 +34,7 @@ function ThreadsPage() {
     {
       id: 'thread-3',
       title: 'Thread Ketiga rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -42,7 +45,7 @@ function ThreadsPage() {
     {
       id: 'thread-4',
       title: 'Thread Keempat rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -53,7 +56,7 @@ function ThreadsPage() {
     {
       id: 'thread-5',
       title: 'Thread Kelima rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -64,7 +67,7 @@ function ThreadsPage() {
     {
       id: 'thread-6',
       title: 'Thread Keenam rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -75,7 +78,7 @@ function ThreadsPage() {
     {
       id: 'thread-7',
       title: 'Thread Keenam rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -86,7 +89,7 @@ function ThreadsPage() {
     {
       id: 'thread-8',
       title: 'Thread Keenam rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
@@ -138,31 +141,45 @@ function ThreadsPage() {
   }));
 
   return (
-    <section className="threads-page page page--aside">
-      <div className="threads-page__main">
-        <div className="thread-lists-container">
-          <ThreadLists threads={threadLists} />
+    <>
+      <section className="threads-page page page--aside">
+        <div className="threads-page__main">
+          <div className="thread-lists-container">
+            <div>
+              <div className="create-thread-container">
+                <h2 className="page-title">Latest Discussion</h2>
+                <button type="button" className="create-thread" onClick={() => navigate('/threads/new')}>
+                  <FiPlus />
+                  { ' ' }
+                  <span className="create-thread-label">New Thread</span>
+                </button>
+              </div>
+              <ThreadLists threads={threadLists} threadTruncate />
+            </div>
+          </div>
+          <aside className="thread-side-contents">
+            <div className="profile-content">
+              <UserProfile {...authUser} />
+            </div>
+            <h4 className="find-categories">Find Categories</h4>
+            <Input type="text" placeholder="Search category" />
+            <div className="categories-content">
+              <ThreadCategoryContainer>
+                {categories.map((category) => (
+                  <ThreadCategory
+                    label={category}
+                    isActive={threadCategory.includes(category)}
+                    key={category}
+                  />
+                ))}
+              </ThreadCategoryContainer>
+            </div>
+          </aside>
         </div>
-        <aside className="thread-side-contents">
-          <div className="profile-content">
-            <UserProfile {...authUser} />
-          </div>
-          <h4 className="find-categories">Find Categories</h4>
-          <Input type="text" placeholder="Search category" />
-          <div className="categories-content">
-            <ThreadCategoryContainer>
-              {categories.map((category) => (
-                <ThreadCategory
-                  label={category}
-                  isActive={threadCategory.includes(category)}
-                  key={category}
-                />
-              ))}
-            </ThreadCategoryContainer>
-          </div>
-        </aside>
-      </div>
-    </section>
+      </section>
+      <Outlet />
+    </>
+
   );
 }
 

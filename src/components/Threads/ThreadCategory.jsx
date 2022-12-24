@@ -11,6 +11,11 @@ function ThreadCategory({ label, isActive }) {
 
 ThreadCategory.propTypes = {
   label: PropTypes.string.isRequired,
+  isActive: PropTypes.bool,
+};
+
+ThreadCategory.defaultProps = {
+  isActive: false,
 };
 
 export default ThreadCategory;

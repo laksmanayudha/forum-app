@@ -12,8 +12,13 @@ function SideBar({ logo, children }) {
   );
 }
 
-SideBar.propTyeps = {
+SideBar.propTypes = {
   logo: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+SideBar.defaultProps = {
+  children: [],
 };
 
 export default SideBar;

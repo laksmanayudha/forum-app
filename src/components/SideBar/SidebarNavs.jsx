@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function SidebarNavs({ children }) {
   return (
@@ -10,5 +10,13 @@ function SidebarNavs({ children }) {
     </nav>
   );
 }
+
+SidebarNavs.propTypes = {
+  children: PropTypes.node,
+};
+
+SidebarNavs.defaultProps = {
+  children: [],
+};
 
 export default SidebarNavs;

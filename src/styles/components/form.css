@@ -25,12 +25,31 @@
 .form-submit {
   background-color: var(--blue-1);
   border: 1px solid var(--blue-1);
-  color: var(--white);
   border-radius: 4px;
   padding: .8em;
   cursor: pointer;
 }
 
+.form-submit h4 {
+  color: var(--white);
+}
+
 .form-submit:hover{
   background-color: var(--blue-1-older);
+}
+
+/* textarea */
+.textarea {
+  max-width: 100%;
+  min-height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.textarea[placeholder]::before {
+  content: attr(placeholder);
+}
+
+.textarea[placeholder]:focus::before{
+  content: "";
 }

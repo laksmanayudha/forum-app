@@ -1,6 +1,7 @@
 @import url('../app.css');
 
-.threads-page {
+.threads-page__main {
+  width: 100%;
   display: flex;
 }
 
@@ -16,11 +17,12 @@
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  padding: 2.5em;
+  border-left: 1px solid var(--divider);
+  padding: 2.5em 2.5em 0 1.5em;
 }
 
 .categories-content {
-  max-width: 250px;
+  max-width: 280px;
 }
 
 .find-categories {
@@ -29,8 +31,14 @@
 
 @media (max-width: 1024px) {
   .threads-page {
+    display: flex;
+    justify-content: center;
+  }
+
+  .threads-page__main {
     flex-direction: column-reverse;
     justify-content: flex-end;
+    max-width: 640px;
   }
 
   .thread-lists-container {

@@ -4,21 +4,21 @@
 .thread-lists {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1em;
   width: 100%;
-  max-width: 850px;
+  max-width: 880px;
 }
 
 .thread {
   border-bottom: 1px solid var(--divider);
   display: flex;
-  padding: 1em;
+  padding: 1em 1.5em;
 }
 
 .thread__votes {
   display: flex;
   justify-content: center;
-  padding: 1em;
+  padding: 0 1em;
 }
 
 .thread__data-container {
@@ -33,11 +33,15 @@
   gap: .5em;
 }
 
-.thread__title-desc h3 a {
+.thread__title-desc h4 a {
+  color: var(--blue-1);
+}
+
+.thread__title-desc div {
   color: var(--black);
 }
 
-.thread__title-desc h3 a:hover {
+.thread__title-desc h4 a:hover {
   text-decoration: underline;
 }
 
@@ -152,4 +156,10 @@
 
 .votes--voted .votes-value {
   color: var(--white);
+}
+
+@media (min-width: 1024px) {
+  .thread-lists {
+    min-width: 640px !important;
+  }
 }

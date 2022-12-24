@@ -8,7 +8,7 @@ function ThreadsPage() {
   const threads = [
     {
       id: 'thread-1',
-      title: 'Thread Pertama rule is a formatting/documenting rule is a formatting/documenting ?',
+      title: 'Thread Pertama rule is a formatting or documenting rule is a formatting or documenting ?',
       body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
       category: 'python',
       createdAt: '2022-12-21T07:00:00.000Z',
@@ -19,12 +19,78 @@ function ThreadsPage() {
     },
     {
       id: 'thread-2',
-      title: 'Thread Kedua rule is a formatting/documenting ?',
+      title: 'Thread Kedua rule is a formatting or documenting is a formatting or documenting rule is a formatting or documenting  ?',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      category: 'github',
+      createdAt: '2022-12-21T07:00:00.000Z',
+      ownerId: 'jane_doe',
+      upVotesBy: ['john_doe'],
+      downVotesBy: [],
+      totalComments: 2,
+    },
+    {
+      id: 'thread-3',
+      title: 'Thread Ketiga rule is a formatting or documenting ?',
       body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
       category: 'github',
       createdAt: '2022-09-21T07:00:00.000Z',
       ownerId: 'jane_doe',
-      upVotesBy: ['john_doe'],
+      upVotesBy: [],
+      downVotesBy: [],
+      totalComments: 23,
+    },
+    {
+      id: 'thread-4',
+      title: 'Thread Keempat rule is a formatting or documenting ?',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      category: 'github',
+      createdAt: '2022-09-21T07:00:00.000Z',
+      ownerId: 'jane_doe',
+      upVotesBy: [],
+      downVotesBy: [],
+      totalComments: 23,
+    },
+    {
+      id: 'thread-5',
+      title: 'Thread Kelima rule is a formatting or documenting ?',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      category: 'github',
+      createdAt: '2022-09-21T07:00:00.000Z',
+      ownerId: 'jane_doe',
+      upVotesBy: [],
+      downVotesBy: [],
+      totalComments: 23,
+    },
+    {
+      id: 'thread-6',
+      title: 'Thread Keenam rule is a formatting or documenting ?',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      category: 'github',
+      createdAt: '2022-09-21T07:00:00.000Z',
+      ownerId: 'jane_doe',
+      upVotesBy: [],
+      downVotesBy: [],
+      totalComments: 23,
+    },
+    {
+      id: 'thread-7',
+      title: 'Thread Keenam rule is a formatting or documenting ?',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      category: 'github',
+      createdAt: '2022-09-21T07:00:00.000Z',
+      ownerId: 'jane_doe',
+      upVotesBy: [],
+      downVotesBy: [],
+      totalComments: 23,
+    },
+    {
+      id: 'thread-8',
+      title: 'Thread Keenam rule is a formatting or documenting ?',
+      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.',
+      category: 'github',
+      createdAt: '2022-09-21T07:00:00.000Z',
+      ownerId: 'jane_doe',
+      upVotesBy: [],
       downVotesBy: [],
       totalComments: 23,
     },
@@ -72,28 +138,30 @@ function ThreadsPage() {
   }));
 
   return (
-    <section className="threads-page page">
-      <div className="thread-lists-container">
-        <ThreadLists threads={threadLists} />
+    <section className="threads-page page page--aside">
+      <div className="threads-page__main">
+        <div className="thread-lists-container">
+          <ThreadLists threads={threadLists} />
+        </div>
+        <aside className="thread-side-contents">
+          <div className="profile-content">
+            <UserProfile {...authUser} />
+          </div>
+          <h4 className="find-categories">Find Categories</h4>
+          <Input type="text" placeholder="Search category" />
+          <div className="categories-content">
+            <ThreadCategoryContainer>
+              {categories.map((category) => (
+                <ThreadCategory
+                  label={category}
+                  isActive={threadCategory.includes(category)}
+                  key={category}
+                />
+              ))}
+            </ThreadCategoryContainer>
+          </div>
+        </aside>
       </div>
-      <aside className="thread-side-contents">
-        <div className="profile-content">
-          <UserProfile {...authUser} />
-        </div>
-        <h4 className="find-categories">Find Categories</h4>
-        <Input type="text" placeholder="Search category" />
-        <div className="categories-content">
-          <ThreadCategoryContainer>
-            {categories.map((category) => (
-              <ThreadCategory
-                label={category}
-                isActive={threadCategory.includes(category)}
-                key={category}
-              />
-            ))}
-          </ThreadCategoryContainer>
-        </div>
-      </aside>
     </section>
   );
 }

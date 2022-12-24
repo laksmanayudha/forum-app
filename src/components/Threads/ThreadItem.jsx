@@ -35,9 +35,9 @@ function ThreadItem({
       </div>
       <div className="thread__data-container">
         <div className="thread__title-desc">
-          <h3 className="thread--truncate">
+          <h4 className="thread--truncate">
             <Link to="/">{ title }</Link>
-          </h3>
+          </h4>
           <div className="thread--truncate">
             { body }
           </div>
@@ -67,13 +67,20 @@ function ThreadItem({
   );
 }
 
+const userShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+};
+
 ThreadItem.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape(userShape).isRequired,
   upVotesCount: PropTypes.number.isRequired,
   downVotesCount: PropTypes.number.isRequired,
   isDownVote: PropTypes.bool.isRequired,

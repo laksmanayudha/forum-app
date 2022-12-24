@@ -8,7 +8,8 @@
   --blue-3: #A3D8F4;
   --blue-4: #B9FFFC;
   --white: #FFFFFF;
-  --black: #222831;
+  /* --black: #222831; */
+  --black: #3a3a3a;;
   --divider: #EBEBEB;
   --grey: #959595;
   --gold-1: #C58940;
@@ -25,6 +26,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  color: var(--black);
 }
 
 a {
@@ -64,6 +66,9 @@ small {
 
 .app-container {
   display: flex;
+  width: 100%;
+  max-width: 1422px;
+  margin: 0 auto;
 }
 
 .app-container main {
@@ -74,7 +79,15 @@ small {
   min-height: 100vh;
 }
 
-@media (max-width: 1286px) {}
+.page--aside {
+  margin-left: 200px;
+}
+
+@media (max-width: 1286px) {
+  .page--aside {
+    margin-left: 110px;
+  }
+}
 
 @media (max-width: 1024px) {}
 
@@ -87,5 +100,9 @@ small {
 @media (max-width: 640px) {
   :root {
     font-size: 10px;
+  }
+
+  .page--aside {
+    margin-left: 0;
   }
 }

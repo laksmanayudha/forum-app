@@ -8,10 +8,10 @@ function SidebarNavItem({ label, icon, href }) {
   return (
     <li className={`sidebar-lists-item ${pathname === href ? 'sidebar--active' : ''}`}>
       <Link to={href}>
-        <h4>
-          { icon }
-          <span className="sidebar-lists-item__label">{ label }</span>
-        </h4>
+        { icon }
+        <span className="sidebar-lists-item__label">
+          { label }
+        </span>
       </Link>
     </li>
   );
@@ -19,6 +19,7 @@ function SidebarNavItem({ label, icon, href }) {
 
 SidebarNavItem.propTyeps = {
   label: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 export default SidebarNavItem;

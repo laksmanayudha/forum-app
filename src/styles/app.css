@@ -67,7 +67,6 @@ small {
 .app-container {
   display: flex;
   width: 100%;
-  max-width: 1422px;
   margin: 0 auto;
 }
 

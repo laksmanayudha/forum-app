@@ -1,4 +1,5 @@
 import React from 'react';
+import withSidebar from '../components/hoc/withSidebar';
 import { Leaderboards } from '../components/Leaderboards';
 // import PropTypes from 'prop-types';
 import '../styles/pages/leaderboards-page.css';
@@ -62,10 +63,10 @@ function LeaderboardPage() {
   ];
 
   return (
-    <section className="leaderboard-page page page--aside">
+    <section className="leaderboard-page page--aside">
       <Leaderboards leaderboards={leaderboards} />
     </section>
   );
 }
 
-export default LeaderboardPage;
+export default withSidebar(LeaderboardPage);

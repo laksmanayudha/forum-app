@@ -2,6 +2,7 @@ import React from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { Input } from '../components/Form';
+import withSidebar from '../components/hoc/withSidebar';
 import { ThreadCategory, ThreadCategoryContainer, ThreadLists } from '../components/Threads';
 import { UserProfile } from '../components/UserProfile';
 import '../styles/pages/threads-page.css';
@@ -183,4 +184,4 @@ function ThreadsPage() {
   );
 }
 
-export default ThreadsPage;
+export default withSidebar(ThreadsPage);

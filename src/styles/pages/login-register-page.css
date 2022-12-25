@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.logo h1 {
+  color: var(--white);
+}
+
 .register-page__hero,
 .login-page__hero {
   background-color: var(--blue-1);

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IoTriangleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import ThreadCategory from './ThreadCategory';
 import ThreadCategoryContainer from './ThreadCategoryContainer';
 import { postedAt } from '../../utils';
+import { Votes } from '../Votes';
 
 function ThreadItem({
   id,
@@ -23,16 +23,12 @@ function ThreadItem({
   return (
     <article className="thread" key={id}>
       <div className="thread__votes">
-        <div className="votes">
-          <div className={`votes-container up-votes ${isUpVote ? 'votes--voted' : ''}`}>
-            <IoTriangleOutline />
-            <small className="votes-value">{ upVotesCount }</small>
-          </div>
-          <div className={`votes-container down-votes ${isDownVote ? 'votes--voted' : ''}`}>
-            <IoTriangleOutline className="down-votes" />
-            <small className="votes-value">{ downVotesCount }</small>
-          </div>
-        </div>
+        <Votes
+          upVotesCount={upVotesCount}
+          downVotesCount={downVotesCount}
+          isDownVote={isDownVote}
+          isUpVote={isUpVote}
+        />
       </div>
       <div className="thread__data-container">
         <div className="thread__title-desc">

@@ -4,10 +4,11 @@ import { BiUserCircle } from 'react-icons/bi';
 import { FiLogOut, FiSearch } from 'react-icons/fi';
 import { MdOutlineLeaderboard } from 'react-icons/md';
 import { IoChatbubblesOutline } from 'react-icons/io5';
-// import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ThreadsPage from './pages/ThreadsPage';
 import CreateThreadPage from './pages/CreateThreadPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 import { SideBar, SidebarNavItem, SidebarNavs } from './components/SideBar';
 import './styles/app.css';
 
@@ -24,10 +25,11 @@ function App() {
         </SidebarNavs>
       </SideBar>
       <main>
-        {/* <LoginPage /> */}
-        {/* <RegisterPage /> */}
         <Routes>
-          <Route path="*" element={<RegisterPage />} />
+          <Route path="*" element={<LoginPage />} />
+          <Route path="lgoin" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="leaderboards" element={<LeaderboardPage />} />
           <Route path="threads" element={<ThreadsPage />}>
             <Route path="new" element={<CreateThreadPage />} />
           </Route>

@@ -1,0 +1,47 @@
+@import url('../app.css');
+
+.leaderboards-lists {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  width: 100%;
+  max-width: 800px;
+}
+
+.leaderboard {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+.leaderboard__rank,
+.leaderboard__score {
+  text-align: center;
+  flex: 1;
+}
+
+.leaderboard__user-profile {
+  flex: 8;
+}
+
+.leaderboard--header {
+  background-color: var(--blue-1);
+}
+
+.leaderboard--header h4 {
+  font-weight: bold;
+  color: var(--white);
+}
+
+.first {
+  background-color: var(--gold-2);
+}
+
+.second {
+  background-color: var(--gold-3);
+}
+
+.third {
+  background-color: var(--silver);
+}

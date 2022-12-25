@@ -1,0 +1,70 @@
+@import url('../app.css');
+
+.thread-detail-page__main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.thread-detail-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2.5em 1em;
+}
+
+.thread-detail-container > div {
+  width: 100%;
+  max-width: 880px;
+}
+
+/* side content */
+.thread-detail-side-contents {
+  padding: 2.5em 2.5em 0 1.5em;
+  border-left: 1px solid var(--divider);
+}
+
+.threads-content {
+  max-width: 280px;
+}
+
+.threads-content h4 {
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+
+.threads-content ul {
+  list-style-type: none;
+}
+
+.threads-content ul li {
+  display: flex;
+  align-items: baseline;
+}
+
+.threads-content ul li::before {
+  content: "•";
+  margin-right: .3em;
+  color: var(--grey);
+}
+
+.threads-content h4,
+.threads-content ul li a {
+  color: var(--blue-1);
+}
+
+.threads-content ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .thread-detail-container > div {
+    min-width: 640px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .thread-detail-side-contents {
+    display: none;
+  }
+}

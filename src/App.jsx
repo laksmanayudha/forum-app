@@ -5,8 +5,9 @@ import RegisterPage from './pages/RegisterPage';
 import ThreadsPage from './pages/ThreadsPage';
 import CreateThreadPage from './pages/CreateThreadPage';
 import LeaderboardPage from './pages/LeaderboardPage';
-import './styles/app.css';
 import NotFoundPage from './pages/NotFoundPage';
+import ThreadDetail from './pages/ThreadDetail';
+import './styles/app.css';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="threads" element={<ThreadsPage />}>
             <Route path="new" element={<CreateThreadPage />} />
           </Route>
+          <Route path="thread/:id" element={<ThreadDetail />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

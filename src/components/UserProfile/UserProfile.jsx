@@ -13,10 +13,14 @@ function UserProfile({ avatar, name, email }) {
   );
 }
 
+UserProfile.defaultProps = {
+  email: '',
+};
+
 UserProfile.propTypes = {
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
 };
 
 export default UserProfile;

@@ -1,7 +1,9 @@
 import React from 'react';
 // import { BiUserCircle } from 'react-icons/bi';
-// import { FiSearch } from 'react-icons/fi';
-import { FiLogOut } from 'react-icons/fi';
+import {
+  FiLogOut,
+  // FiSearch,
+} from 'react-icons/fi';
 import { MdOutlineLeaderboard } from 'react-icons/md';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 import { SideBar, SidebarNavItem, SidebarNavs } from '../SideBar';
@@ -16,7 +18,7 @@ function withSidebar(Component) {
             <SidebarNavItem label="Leaderboards" icon={<MdOutlineLeaderboard />} href="/leaderboards" />
             {/* <SidebarNavItem label="Search" icon={<FiSearch />} href="/" /> */}
             {/* <SidebarNavItem label="Profile" icon={<BiUserCircle />} href="/" /> */}
-            <SidebarNavItem label="Logout" icon={<FiLogOut />} href="/" />
+            <SidebarNavItem label="Logout" icon={<FiLogOut />} href="/login" />
           </SidebarNavs>
         </SideBar>
         <Component {...props} />

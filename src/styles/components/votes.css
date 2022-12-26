@@ -2,14 +2,15 @@
 
 /* votes */
 .votes {
+  width: min-content;
   display: flex;
   flex-direction: column;
 }
 
 .up-votes svg,
 .down-votes svg {
-  width: 5em;
-  height: 5em;
+  width: 3.5em;
+  height: 3.5em;
 }
 
 .up-votes:hover svg path,

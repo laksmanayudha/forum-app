@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FormSubmit, Textarea, Form } from '../components/Form';
 import withSidebar from '../components/hoc/withSidebar';
 import ThreadItem from '../components/Threads/ThreadItem';
 import { UserProfile } from '../components/UserProfile';
+import { Votes } from '../components/Votes';
 import '../styles/pages/thread-detail-page.css';
+import { postedAt } from '../utils';
 
 function ThreadDetail() {
   const threadDetail = {
@@ -64,6 +67,14 @@ function ThreadDetail() {
     totalComments: threadDetail.comments.length,
   };
 
+  const comments = threadDetail.comments.map((comment) => ({
+    ...comment,
+    upVotesCount: comment.upVotesBy.length,
+    downVotesCount: comment.downVotesBy.length,
+    isUpVote: comment.upVotesBy.includes(authUser.id),
+    isDownVote: comment.downVotesBy.includes(authUser.id),
+  }));
+
   return (
     <section className="thread-detail-page page--aside">
       <div className="thread-detail-page__main">
@@ -74,7 +85,33 @@ function ThreadDetail() {
               <ThreadItem {...threadDetailDisplay} />
             </div>
             <div className="thread-comments">
-              comments
+              <div className="comments-branch">
+                <div className="comments-lists">
+                  {comments.map((comment) => (
+                    <div className="comment" key={comment.id}>
+                      <UserProfile {...comment.owner} />
+                      <div className="comment-body">
+                        <Votes {...comment} />
+                        <div className="comment-content">
+                          <div className="content">
+                            {comment.content}
+                          </div>
+                          <div className="created-at">
+                            <span>{postedAt(comment.createdAt)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="thread-comment-input">
+              <h4>Your comment</h4>
+              <Form>
+                <Textarea placeholder="Your commment here" />
+                <FormSubmit label="Send" />
+              </Form>
             </div>
           </div>
         </div>

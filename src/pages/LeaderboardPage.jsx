@@ -1,5 +1,5 @@
 import React from 'react';
-import withSidebar from '../components/hoc/withSidebar';
+import withSidebar from '../hoc/withSidebar';
 import { Leaderboards } from '../components/Leaderboards';
 // import PropTypes from 'prop-types';
 import '../styles/pages/leaderboards-page.css';

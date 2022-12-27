@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FormSubmit, Textarea, Form } from '../components/Form';
-import withSidebar from '../components/hoc/withSidebar';
+import withSidebar from '../hoc/withSidebar';
 import ThreadItem from '../components/Threads/ThreadItem';
 import { UserProfile } from '../components/UserProfile';
-import { Votes } from '../components/Votes';
 import '../styles/pages/thread-detail-page.css';
-import { postedAt } from '../utils';
+import { CommentsBranch, CommentsLists } from '../components/Comments';
 
-function ThreadDetail() {
+function ThreadDetailPage() {
   const threadDetail = {
     id: 'thread-1',
     title: 'Thread Keenam rule is a formatting or documenting ?',
@@ -85,26 +84,9 @@ function ThreadDetail() {
               <ThreadItem {...threadDetailDisplay} />
             </div>
             <div className="thread-comments">
-              <div className="comments-branch">
-                <div className="comments-lists">
-                  {comments.map((comment) => (
-                    <div className="comment" key={comment.id}>
-                      <UserProfile {...comment.owner} />
-                      <div className="comment-body">
-                        <Votes {...comment} />
-                        <div className="comment-content">
-                          <div className="content">
-                            {comment.content}
-                          </div>
-                          <div className="created-at">
-                            <span>{postedAt(comment.createdAt)}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <CommentsBranch>
+                <CommentsLists comments={comments} />
+              </CommentsBranch>
             </div>
             <div className="thread-comment-input">
               <h4>Your comment</h4>
@@ -142,4 +124,4 @@ function ThreadDetail() {
   );
 }
 
-export default withSidebar(ThreadDetail);
+export default withSidebar(ThreadDetailPage);

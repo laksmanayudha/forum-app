@@ -6,7 +6,7 @@ import {
 } from 'react-icons/fi';
 import { MdOutlineLeaderboard } from 'react-icons/md';
 import { IoChatbubblesOutline } from 'react-icons/io5';
-import { SideBar, SidebarNavItem, SidebarNavs } from '../SideBar';
+import { SideBar, SidebarNavItem, SidebarNavs } from '../components/SideBar';
 
 function withSidebar(Component) {
   return function withSidebarComponent(props) {

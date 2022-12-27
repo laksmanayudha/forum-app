@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function FormSubmit({ children }) {
+function FormSubmit({ children, onSubmit }) {
   return (
-    <form className="form">
+    <form className="form" onSubmit={(e) => onSubmit(e)}>
       { children }
     </form>
   );
@@ -11,6 +11,7 @@ function FormSubmit({ children }) {
 
 FormSubmit.propTypes = {
   children: PropTypes.node,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 FormSubmit.defaultProps = {

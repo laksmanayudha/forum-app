@@ -1,0 +1,6 @@
+@import url('../app.css');
+
+.loading {
+  position: sticky;
+  top: 0;
+}

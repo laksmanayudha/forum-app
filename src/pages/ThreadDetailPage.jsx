@@ -6,10 +6,18 @@ import withSidebar from '../hoc/withSidebar';
 import ThreadItem from '../components/Threads/ThreadItem';
 import { UserProfile } from '../components/UserProfile';
 import '../styles/pages/thread-detail-page.css';
-import { CommentsBranch, CommentsLists } from '../components/Comments';
+// import { CommentsBranch, CommentsLists } from '../components/Comments';
 import { asyncPopulateThreadDetailAndThreads } from '../states/shared/action';
 import useInput from '../hooks/useInput';
-import { asyncAddComment } from '../states/threadDetail/action';
+import {
+  asyncAddComment,
+  // asyncDownvoteComment,
+  asyncDownvoteThreadDetail,
+  // asyncNeutralvoteComment,
+  asyncNeutralvoteThreadDetail,
+  // asyncUpvoteComment,
+  asyncUpvoteThreadDetail,
+} from '../states/threadDetail/action';
 
 function ThreadDetailPage() {
   const { threadId } = useParams();
@@ -22,6 +30,18 @@ function ThreadDetailPage() {
     dispatch(asyncAddComment(threadId, content));
     textArea.current.innerHTML = '';
   };
+  const onThreadVotes = (votesType, id) => {
+    if (!authUser) return;
+    if (votesType === 'upVotes') dispatch(asyncUpvoteThreadDetail(id));
+    if (votesType === 'downVotes') dispatch(asyncDownvoteThreadDetail(id));
+    if (votesType === 'neutralVotes') dispatch(asyncNeutralvoteThreadDetail(id));
+  };
+  // const onCommentVotes = (votesType, id) => {
+  //   if (!authUser) return;
+  //   if (votesType === 'upVotes') dispatch(asyncUpvoteComment(threadDetail.id, id));
+  //   if (votesType === 'downVotes') dispatch(asyncDownvoteComment(threadDetail.id, id));
+  //   if (votesType === 'neutralVotes') dispatch(asyncNeutralvoteComment(threadDetail.id, id));
+  // };
 
   useEffect(() => {
     dispatch(asyncPopulateThreadDetailAndThreads(threadId));
@@ -29,6 +49,8 @@ function ThreadDetailPage() {
 
   if (!threadDetail) return null;
   if (threadDetail.id !== threadId) return null;
+
+  // console.log(threadDetailDisplay);
 
   const threadDetailDisplay = {
     ...threadDetail,
@@ -38,16 +60,18 @@ function ThreadDetailPage() {
     isUpVote: authUser ? threadDetail.upVotesBy.includes(authUser.id) : false,
     isDownVote: authUser ? threadDetail.downVotesBy.includes(authUser.id) : false,
     totalComments: threadDetail.comments.length,
+    onVotes: onThreadVotes,
   };
 
-  const comments = threadDetail.comments.map((comment) => ({
-    ...comment,
-    owner: { ...comment.owner, email: '' },
-    upVotesCount: comment.upVotesBy.length,
-    downVotesCount: comment.downVotesBy.length,
-    isUpVote: authUser ? comment.upVotesBy.includes(authUser.id) : false,
-    isDownVote: authUser ? comment.downVotesBy.includes(authUser.id) : false,
-  }));
+  // const comments = threadDetail.comments.map((comment) => ({
+  //   ...comment,
+  //   owner: { ...comment.owner, email: '' },
+  //   upVotesCount: comment.upVotesBy.length,
+  //   downVotesCount: comment.downVotesBy.length,
+  //   isUpVote: authUser ? comment.upVotesBy.includes(authUser.id) : false,
+  //   isDownVote: authUser ? comment.downVotesBy.includes(authUser.id) : false,
+  //   onVotes: onCommentVotes,
+  // }));
 
   const relatedThreads = threads.filter((thread, index) => index < 4);
 
@@ -61,9 +85,9 @@ function ThreadDetailPage() {
               <ThreadItem {...threadDetailDisplay} />
             </div>
             <div className="thread-comments">
-              <CommentsBranch>
+              {/* <CommentsBranch>
                 <CommentsLists comments={comments} />
-              </CommentsBranch>
+              </CommentsBranch> */}
             </div>
             <div className="thread-comment-input">
               <h4>Your comment</h4>

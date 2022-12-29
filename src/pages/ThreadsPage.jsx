@@ -9,6 +9,7 @@ import { UserProfile } from '../components/UserProfile';
 import '../styles/pages/threads-page.css';
 import { asyncPopulateUsersThreadsCategories } from '../states/shared/action';
 import { makeid } from '../utils';
+import { asyncDownvoteThread, asyncNeutralvoteThread, asyncUpvoteThread } from '../states/threads/action';
 
 function ThreadsPage() {
   const navigate = useNavigate();
@@ -21,6 +22,13 @@ function ThreadsPage() {
     threadCategories = [],
   } = useSelector((states) => states);
 
+  const onVotes = (votesType, threadId) => {
+    if (!authUser) return;
+    if (votesType === 'upVotes') dispatch(asyncUpvoteThread(threadId));
+    if (votesType === 'downVotes') dispatch(asyncDownvoteThread(threadId));
+    if (votesType === 'neutralVotes') dispatch(asyncNeutralvoteThread(threadId));
+  };
+
   const threadLists = threads.map((thread) => ({
     ...thread,
     user: users.find((user) => user.id === thread.ownerId) || {},
@@ -29,6 +37,7 @@ function ThreadsPage() {
     isUpVote: authUser ? thread.upVotesBy.includes(authUser.id) : false,
     isDownVote: authUser ? thread.downVotesBy.includes(authUser.id) : false,
     detailPage: `/thread/${thread.id}`,
+    onVotes,
   }));
 
   useEffect(() => {

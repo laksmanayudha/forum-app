@@ -109,8 +109,7 @@ const api = (() => {
 
   // Thread Vote API
   async function upvoteThread(threadId) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/
-    ${threadId}/up-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/up-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -120,8 +119,7 @@ const api = (() => {
   }
 
   async function downvoteThread(threadId) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/
-    ${threadId}/down-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/down-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -131,8 +129,7 @@ const api = (() => {
   }
 
   async function neutralvoteThread(threadId) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/
-    ${threadId}/neutral-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/neutral-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -143,8 +140,7 @@ const api = (() => {
 
   // Comment Vote API
   async function upvoteComment(threadId, commentId) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/
-    ${threadId}/comments/${commentId}/up-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -154,8 +150,7 @@ const api = (() => {
   }
 
   async function downvoteComment(threadId, commentId) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/
-    ${threadId}/comments/${commentId}/down-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -165,8 +160,7 @@ const api = (() => {
   }
 
   async function neutralvoteComment(threadId, commentId) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/
-    ${threadId}/comments/${commentId}/neutral-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

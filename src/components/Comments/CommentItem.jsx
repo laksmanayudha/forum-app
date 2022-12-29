@@ -6,6 +6,7 @@ import { Votes } from '../Votes';
 import { postedAt } from '../../utils';
 
 function CommentItem({
+  id,
   owner,
   content,
   createdAt,
@@ -13,6 +14,7 @@ function CommentItem({
   downVotesCount,
   isDownVote,
   isUpVote,
+  onVotes,
 }) {
   return (
     <div className="comment">
@@ -23,6 +25,8 @@ function CommentItem({
           downVotesCount,
           isDownVote,
           isUpVote,
+          id,
+          onVotes,
         }}
         />
         <div className="comment-content">
@@ -46,12 +50,14 @@ const ownerShape = {
 
 CommentItem.propTypes = {
   owner: PropTypes.shape(ownerShape).isRequired,
+  id: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   upVotesCount: PropTypes.number.isRequired,
   downVotesCount: PropTypes.number.isRequired,
   isDownVote: PropTypes.bool.isRequired,
   isUpVote: PropTypes.bool.isRequired,
+  onVotes: PropTypes.func.isRequired,
 };
 
 export default CommentItem;

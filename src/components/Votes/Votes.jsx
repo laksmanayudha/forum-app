@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoTriangleOutline } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 
@@ -7,17 +7,32 @@ function Votes({
   downVotesCount,
   isDownVote,
   isUpVote,
+  onVotes,
+  id,
 }) {
+  const [votesType, setVotesType] = useState(() => {
+    if (isDownVote) return 'downVotes';
+    if (isUpVote) return 'upVotes';
+    return 'neutralVotes';
+  });
+  const onVotesChange = (type) => {
+    if (votesType !== type) setVotesType(type);
+    else setVotesType('neutralVotes');
+  };
+  useEffect(() => {
+    onVotes(votesType, id);
+  }, [votesType]);
+
   return (
     <div className="votes">
-      <div className={`votes-container up-votes ${isUpVote ? 'votes--voted' : ''}`}>
+      <button type="button" className={`votes-container up-votes ${isUpVote ? 'votes--voted' : ''}`} onClick={() => onVotesChange('upVotes')}>
         <IoTriangleOutline />
         <small className="votes-value">{ upVotesCount }</small>
-      </div>
-      <div className={`votes-container down-votes ${isDownVote ? 'votes--voted' : ''}`}>
+      </button>
+      <button type="button" className={`votes-container down-votes ${isDownVote ? 'votes--voted' : ''}`} onClick={() => onVotesChange('downVotes')}>
         <IoTriangleOutline className="down-votes" />
         <small className="votes-value">{ downVotesCount }</small>
-      </div>
+      </button>
     </div>
   );
 }
@@ -27,6 +42,8 @@ Votes.propTypes = {
   downVotesCount: PropTypes.number.isRequired,
   isDownVote: PropTypes.bool.isRequired,
   isUpVote: PropTypes.bool.isRequired,
+  onVotes: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Votes;

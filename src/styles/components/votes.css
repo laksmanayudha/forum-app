@@ -30,7 +30,10 @@
 
 .votes-container {
   position: relative;
-  cursor: default;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }
 
 .up-votes .votes-value,

@@ -13,14 +13,19 @@ function threadDetailReducer(threadDetail = null, action = {}) {
       if (action.payload.vote.voteType === 1) {
         return {
           ...threadDetail,
-          upVotesBy: threadDetail.upVotesBy.push(action.payload.vote.userId),
+          upVotesBy: !threadDetail.upVotesBy.includes(action.payload.vote.userId)
+            ? [...threadDetail.upVotesBy, action.payload.vote.userId] : [...threadDetail.upVotesBy],
+          downVotesBy: threadDetail.downVotesBy.filter((id) => id !== action.payload.vote.userId),
         };
       }
 
       if (action.payload.vote.voteType === -1) {
         return {
           ...threadDetail,
-          downVotesBy: threadDetail.downVotesBy.push(action.payload.vote.userId),
+          upVotesBy: threadDetail.upVotesBy.filter((id) => id !== action.payload.vote.userId),
+          downVotesBy: !threadDetail.downVotesBy.includes(action.payload.vote.userId)
+            ? [...threadDetail.downVotesBy, action.payload.vote.userId]
+            : [...threadDetail.downVotesBy],
         };
       }
 
@@ -40,14 +45,16 @@ function threadDetailReducer(threadDetail = null, action = {}) {
             if (action.payload.vote.voteType === 1) {
               return {
                 ...comment,
-                upVotesBy: comment.upVotesBy.push(action.payload.vote.userId),
+                upVotesBy: [...comment.upVotesBy, action.payload.vote.userId],
+                downVotesBy: comment.downVotesBy.filter((id) => id !== action.payload.vote.userId),
               };
             }
 
             if (action.payload.vote.voteType === -1) {
               return {
                 ...comment,
-                downVotesBy: comment.downVotesBy.push(action.payload.vote.userId),
+                upVotesBy: comment.upVotesBy.filter((id) => id !== action.payload.vote.userId),
+                downVotesBy: [...comment.downVotesBy, action.payload.vote.userId],
               };
             }
 

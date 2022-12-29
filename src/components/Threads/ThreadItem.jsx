@@ -21,6 +21,7 @@ function ThreadItem({
   totalComments,
   truncate,
   detailPage,
+  onVotes,
 }) {
   return (
     <article className="thread" key={id}>
@@ -30,6 +31,8 @@ function ThreadItem({
           downVotesCount={downVotesCount}
           isDownVote={isDownVote}
           isUpVote={isUpVote}
+          onVotes={onVotes}
+          id={id}
         />
       </div>
       <div className="thread__data-container">
@@ -84,6 +87,7 @@ ThreadItem.propTypes = {
   isDownVote: PropTypes.bool.isRequired,
   isUpVote: PropTypes.bool.isRequired,
   totalComments: PropTypes.number.isRequired,
+  onVotes: PropTypes.func.isRequired,
   truncate: PropTypes.bool,
   detailPage: PropTypes.string,
 };

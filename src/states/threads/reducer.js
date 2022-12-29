@@ -12,14 +12,18 @@ function threadsReducer(threads = [], action = {}) {
           if (action.payload.vote.voteType === 1) {
             return {
               ...thread,
-              upVotesBy: thread.upVotesBy.push(action.payload.vote.userId),
+              upVotesBy: !thread.upVotesBy.includes(action.payload.vote.userId)
+                ? [...thread.upVotesBy, action.payload.vote.userId] : [...thread.upVotesBy],
+              downVotesBy: thread.downVotesBy.filter((id) => id !== action.payload.vote.userId),
             };
           }
 
           if (action.payload.vote.voteType === -1) {
             return {
               ...thread,
-              downVotesBy: thread.downVotesBy.push(action.payload.vote.userId),
+              upVotesBy: thread.upVotesBy.filter((id) => id !== action.payload.vote.userId),
+              downVotesBy: !thread.downVotesBy.includes(action.payload.vote.userId)
+                ? [...thread.downVotesBy, action.payload.vote.userId] : [...thread.downVotesBy],
             };
           }
 

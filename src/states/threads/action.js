@@ -25,7 +25,7 @@ function addThreadActionCreator(thread) {
   };
 }
 
-function setVoteThread(vote) {
+function setVoteThreadActionCreator(vote) {
   return {
     type: ActionType.SET_VOTE_THREAD,
     payload: {
@@ -51,12 +51,12 @@ function asyncUpvoteThread(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
-    dispatch(setVoteThread({ threadId, voteType: 1, userId: authUser.id }));
+    dispatch(setVoteThreadActionCreator({ threadId, voteType: 1, userId: authUser.id }));
     try {
       await api.upvoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(setVoteThread({ threadId, voteType: 0, userId: authUser.id }));
+      dispatch(setVoteThreadActionCreator({ threadId, voteType: 0, userId: authUser.id }));
     }
     dispatch(hideLoading());
   };
@@ -66,12 +66,12 @@ function asyncDownvoteThread(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
-    dispatch(setVoteThread({ threadId, voteType: -1, userId: authUser.id }));
+    dispatch(setVoteThreadActionCreator({ threadId, voteType: -1, userId: authUser.id }));
     try {
       await api.downvoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(setVoteThread({ threadId, voteType: 0, userId: authUser.id }));
+      dispatch(setVoteThreadActionCreator({ threadId, voteType: 0, userId: authUser.id }));
     }
     dispatch(hideLoading());
   };
@@ -83,12 +83,12 @@ function asyncNeutralvoteThread(threadId) {
     const { authUser, threads } = getState();
     const selectedThread = threads.find((thread) => thread.id === threadId);
     const voteType = selectedThread.downVotesBy.includes(authUser.id) ? -1 : 1;
-    dispatch(setVoteThread({ threadId, voteType: 0, userId: authUser.id }));
+    dispatch(setVoteThreadActionCreator({ threadId, voteType: 0, userId: authUser.id }));
     try {
       await api.neutralvoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(setVoteThread({ threadId, voteType, userId: authUser.id }));
+      dispatch(setVoteThreadActionCreator({ threadId, voteType, userId: authUser.id }));
     }
     dispatch(hideLoading());
   };
@@ -98,7 +98,7 @@ export {
   ActionType,
   receiveThreadsActionCreator,
   addThreadActionCreator,
-  setVoteThread,
+  setVoteThreadActionCreator,
   asyncAddThread,
   asyncUpvoteThread,
   asyncDownvoteThread,

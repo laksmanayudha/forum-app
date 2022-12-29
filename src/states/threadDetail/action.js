@@ -76,7 +76,7 @@ function asyncDownvoteThreadDetail(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
-    dispatch(setVoteThreadDetailActionCreator({ threadId, voteType: 1, userId: authUser.id }));
+    dispatch(setVoteThreadDetailActionCreator({ threadId, voteType: -1, userId: authUser.id }));
     try {
       await api.downvoteThread(threadId);
     } catch (error) {

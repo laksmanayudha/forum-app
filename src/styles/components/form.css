@@ -46,7 +46,7 @@
   overflow: auto;
 }
 
-.textarea[placeholder]::before {
+.textarea[placeholder]:empty:before {
   content: attr(placeholder);
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ThreadCategory({ label, isActive }) {
+function ThreadCategory({ label, active }) {
   return (
-    <span className={`thread-category ${isActive ? 'category--active' : ''}`}>
+    <span className={`thread-category ${active ? 'category--active' : ''}`}>
       { label }
     </span>
   );
@@ -11,11 +11,11 @@ function ThreadCategory({ label, isActive }) {
 
 ThreadCategory.propTypes = {
   label: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
+  active: PropTypes.bool,
 };
 
 ThreadCategory.defaultProps = {
-  isActive: false,
+  active: false,
 };
 
 export default ThreadCategory;

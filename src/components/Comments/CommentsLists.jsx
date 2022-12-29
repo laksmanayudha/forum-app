@@ -5,7 +5,7 @@ import CommentItem from './CommentItem';
 function CommentsLists({ comments }) {
   return (
     <div className="comments-lists">
-      {comments.map((comment) => (
+      {comments && comments.map((comment) => (
         <CommentItem {...comment} key={comment.id} />
       ))}
     </div>

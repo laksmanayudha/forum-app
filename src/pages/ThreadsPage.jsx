@@ -23,11 +23,12 @@ function ThreadsPage() {
 
   const threadLists = threads.map((thread) => ({
     ...thread,
-    user: users.find((user) => user.id === thread.ownerId),
+    user: users.find((user) => user.id === thread.ownerId) || {},
     upVotesCount: thread.upVotesBy.length,
     downVotesCount: thread.downVotesBy.length,
     isUpVote: authUser ? thread.upVotesBy.includes(authUser.id) : false,
     isDownVote: authUser ? thread.downVotesBy.includes(authUser.id) : false,
+    detailPage: `/thread/${thread.id}`,
   }));
 
   useEffect(() => {

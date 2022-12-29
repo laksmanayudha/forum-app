@@ -3,6 +3,7 @@ import api from '../../utils/api';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
 import { receiveThreadCategoriesActionCreator } from '../threadCategories/action';
+import { receiveThreadDetailActionCreator } from '../threadDetail/action';
 
 function asyncPopulateUsersThreadsCategories() {
   return async (dispatch) => {
@@ -21,6 +22,21 @@ function asyncPopulateUsersThreadsCategories() {
   };
 }
 
+function asyncPopulateThreadDetailAndThreads(threadId) {
+  return async (dispatch) => {
+    dispatch(showLoading);
+    try {
+      const threads = await api.getAllThreads();
+      const threadDetail = await api.getThreadDetail(threadId);
+      dispatch(receiveThreadsActionCreator(threads));
+      dispatch(receiveThreadDetailActionCreator(threadDetail));
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
 function asyncPopulateUserDetailAndThreads() {
   return async () => {
 
@@ -30,4 +46,5 @@ function asyncPopulateUserDetailAndThreads() {
 export {
   asyncPopulateUsersThreadsCategories,
   asyncPopulateUserDetailAndThreads,
+  asyncPopulateThreadDetailAndThreads,
 };

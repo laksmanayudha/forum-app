@@ -40,6 +40,8 @@
 
 .thread__title-desc div {
   color: var(--black);
+  word-wrap:break-word;
+  overflow-wrap: break-word;
 }
 
 .thread__title-desc h4 a:hover {

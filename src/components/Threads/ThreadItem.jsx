@@ -13,13 +13,14 @@ function ThreadItem({
   body,
   category,
   createdAt,
-  user,
+  user: { name },
   upVotesCount,
   downVotesCount,
   isDownVote,
   isUpVote,
   totalComments,
   truncate,
+  detailPage,
 }) {
   return (
     <article className="thread" key={id}>
@@ -34,7 +35,7 @@ function ThreadItem({
       <div className="thread__data-container">
         <div className="thread__title-desc">
           <h4 className={`${truncate ? 'thread--truncate' : ''}`}>
-            <Link to="/">{ title }</Link>
+            <Link to={detailPage}>{ title }</Link>
           </h4>
           <div className={`${truncate ? 'thread--truncate' : ''}`}>
             { parser(body) }
@@ -51,7 +52,7 @@ function ThreadItem({
             { ' ' }
             by
             { ' ' }
-            <span className="username">{ user.name }</span>
+            <span className="username">{ name }</span>
             { ' ' }
             -
             { ' ' }
@@ -84,10 +85,12 @@ ThreadItem.propTypes = {
   isUpVote: PropTypes.bool.isRequired,
   totalComments: PropTypes.number.isRequired,
   truncate: PropTypes.bool,
+  detailPage: PropTypes.string,
 };
 
 ThreadItem.defaultProps = {
   truncate: false,
+  detailPage: '',
 };
 
 export default ThreadItem;

@@ -37,7 +37,7 @@ function App() {
             <Route path="threads" element={<ThreadsPage />}>
               <Route path="new" element={<CreateThreadPage />} />
             </Route>
-            <Route path="thread/:id" element={<ThreadDetailPage />} />
+            <Route path="thread/:threadId" element={<ThreadDetailPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

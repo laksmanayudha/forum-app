@@ -5,7 +5,7 @@ import ThreadItem from './ThreadItem';
 function ThreadLists({ threads, threadTruncate }) {
   return (
     <div className="thread-lists">
-      {threads.map((thread) => (
+      {threads && threads.map((thread) => (
         <ThreadItem
           {...thread}
           key={thread.id}
@@ -28,6 +28,7 @@ const threadShape = {
   isDownVote: PropTypes.bool.isRequired,
   isUpVote: PropTypes.bool.isRequired,
   totalComments: PropTypes.number.isRequired,
+  detailPage: PropTypes.string,
 };
 
 ThreadLists.propTypes = {

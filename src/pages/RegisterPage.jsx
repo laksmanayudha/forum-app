@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import {
   FormContainer,
   FormSubmit,
@@ -12,6 +12,7 @@ import { asyncRegisterUser } from '../states/users/action';
 import '../styles/pages/login-register-page.css';
 
 function RegisterPage() {
+  const { authUser } = useSelector((states) => states);
   const [email, setEmail] = useInput();
   const [name, setName] = useInput();
   const [password, setPassword] = useInput();
@@ -19,9 +20,16 @@ function RegisterPage() {
   const navigate = useNavigate();
   const onRegister = (e) => {
     e.preventDefault();
-    dispatch(asyncRegisterUser({ name, email, password }));
-    navigate('/login');
+    dispatch(asyncRegisterUser({ name, email, password }))
+      .then(({ error }) => {
+        if (!error) {
+          navigate('/login');
+        }
+      });
   };
+
+  if (authUser) return <Navigate to="/" />;
+
   return (
     <section className="register-page page">
       <div className="register-page__hero">
@@ -37,14 +45,16 @@ function RegisterPage() {
           </header>
           <FormContainer>
             <Form onSubmit={onRegister}>
-              <Input type="text" placeholder="Your Name" onChange={setName} />
-              <Input type="text" placeholder="Your Email" onChange={setEmail} />
-              <Input type="password" placeholder="Your Password" onChange={setPassword} />
+              <Input type="text" placeholder="Your Name" onChange={setName} value={name} />
+              <Input type="email" placeholder="Your Email" onChange={setEmail} value={email} />
+              <Input type="password" placeholder="Your Password" onChange={setPassword} value={password} />
               <FormSubmit label="Register" />
             </Form>
             <p className="already-have-account">
               Already have an account?
-              <span className="to-login"> login</span>
+              <Link to="/login">
+                <span className="to-login"> login</span>
+              </Link>
             </p>
           </FormContainer>
         </article>

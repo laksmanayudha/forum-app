@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { BiUserCircle } from 'react-icons/bi';
 import {
   FiLogOut,
@@ -7,9 +8,12 @@ import {
 import { MdOutlineLeaderboard } from 'react-icons/md';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 import { SideBar, SidebarNavItem, SidebarNavs } from '../components/SideBar';
+import { asyncUnsetAuthUser } from '../states/authUser/action';
 
 function withSidebar(Component) {
   return function withSidebarComponent(props) {
+    const { authUser } = useSelector((states) => states);
+    const dispatch = useDispatch();
     return (
       <>
         <SideBar logo="ForumApp">
@@ -18,7 +22,16 @@ function withSidebar(Component) {
             <SidebarNavItem label="Leaderboards" icon={<MdOutlineLeaderboard />} href="/leaderboards" />
             {/* <SidebarNavItem label="Search" icon={<FiSearch />} href="/" /> */}
             {/* <SidebarNavItem label="Profile" icon={<BiUserCircle />} href="/" /> */}
-            <SidebarNavItem label="Logout" icon={<FiLogOut />} href="/login" />
+            {authUser
+              && (
+                <SidebarNavItem
+                  label="Logout"
+                  icon={<FiLogOut />}
+                  action={() => {
+                    dispatch(asyncUnsetAuthUser());
+                  }}
+                />
+              )}
           </SidebarNavs>
         </SideBar>
         <Component {...props} />

@@ -21,8 +21,11 @@ function asyncRegisterUser({ name, email, password }) {
       await api.register({ name, email, password });
     } catch (error) {
       alert(error.message);
+      dispatch(hideLoading());
+      return { error: true };
     }
     dispatch(hideLoading());
+    return { error: false };
   };
 }
 

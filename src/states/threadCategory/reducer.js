@@ -1,11 +1,11 @@
 import { ActionType } from './action';
 
-function threadCatogryReducer(threadCateogry = [], action = {}) {
+function threadCatogryReducer(threadCategory = [], action = {}) {
   switch (action.type) {
     case ActionType.SET_THREAD_CATEGORY:
-      return [...threadCateogry, action.payload.threadCategory];
+      return [...threadCategory, action.payload.threadCategory];
     default:
-      return threadCateogry;
+      return threadCategory;
   }
 }
 

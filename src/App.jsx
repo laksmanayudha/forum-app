@@ -13,7 +13,7 @@ import { Loading } from './components/Loading';
 import { asyncPreloadProccess } from './states/isPreload/action';
 
 function App() {
-  const { authUser, isPreload } = useSelector((states) => states);
+  const { isPreload } = useSelector((states) => states);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,29 +24,6 @@ function App() {
     return null;
   }
 
-  if (authUser === null) {
-    return (
-      <>
-        <Loading />
-        <div className="app-container">
-          <main>
-            <Routes>
-              <Route path="/" element={<ThreadsPage />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPage />} />
-              <Route path="leaderboards" element={<LeaderboardPage />} />
-              <Route path="threads" element={<ThreadsPage />}>
-                <Route path="new" element={<CreateThreadPage />} />
-              </Route>
-              <Route path="thread/:id" element={<ThreadDetailPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
-        </div>
-      </>
-    );
-  }
-
   return (
     <>
       <Loading />
@@ -54,6 +31,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<ThreadsPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
             <Route path="leaderboards" element={<LeaderboardPage />} />
             <Route path="threads" element={<ThreadsPage />}>
               <Route path="new" element={<CreateThreadPage />} />

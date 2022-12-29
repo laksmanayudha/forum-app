@@ -1,145 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiPlus } from 'react-icons/fi';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
 import { Input } from '../components/Form';
 import withSidebar from '../hoc/withSidebar';
 import { ThreadCategory, ThreadCategoryContainer, ThreadLists } from '../components/Threads';
 import { UserProfile } from '../components/UserProfile';
 import '../styles/pages/threads-page.css';
+import { asyncPopulateUsersThreadsCategories } from '../states/shared/action';
+import { makeid } from '../utils';
 
 function ThreadsPage() {
   const navigate = useNavigate();
-  const threads = [
-    {
-      id: 'thread-1',
-      title: 'Thread Pertama rule is a formatting or documenting rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'python',
-      createdAt: '2022-12-21T07:00:00.000Z',
-      ownerId: 'john_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 3,
-    },
-    {
-      id: 'thread-2',
-      title: 'Thread Kedua rule is a formatting or documenting is a formatting or documenting rule is a formatting or documenting  ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-12-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: ['john_doe'],
-      downVotesBy: [],
-      totalComments: 2,
-    },
-    {
-      id: 'thread-3',
-      title: 'Thread Ketiga rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-09-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 23,
-    },
-    {
-      id: 'thread-4',
-      title: 'Thread Keempat rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-09-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 23,
-    },
-    {
-      id: 'thread-5',
-      title: 'Thread Kelima rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-09-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 23,
-    },
-    {
-      id: 'thread-6',
-      title: 'Thread Keenam rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-09-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 23,
-    },
-    {
-      id: 'thread-7',
-      title: 'Thread Keenam rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-09-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 23,
-    },
-    {
-      id: 'thread-8',
-      title: 'Thread Keenam rule is a formatting or documenting ?',
-      body: 'This rule is a formatting/documenting preference and not following it wont negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage. specifically document their usage.',
-      category: 'github',
-      createdAt: '2022-09-21T07:00:00.000Z',
-      ownerId: 'jane_doe',
-      upVotesBy: [],
-      downVotesBy: [],
-      totalComments: 23,
-    },
-  ];
-
-  const users = [
-    {
-      id: 'john_doe',
-      name: 'John Doe',
-      email: 'john@example.com',
-      avatar: 'https://generated-image-url.jpg',
-    },
-    {
-      id: 'jane_doe',
-      name: 'Jane Doe',
-      email: 'jane@example.com',
-      avatar: 'https://generated-image-url.jpg',
-    },
-    {
-      id: 'fulan',
-      name: 'Si Fulan',
-      email: 'fulan@example.com',
-      avatar: 'https://generated-image-url.jpg',
-    },
-  ];
-
-  const authUser = {
-    id: 'john_doe',
-    name: 'John Doe',
-    email: 'john@example.com',
-    avatar: 'https://ui-avatars.com/api/?name=Hasan&background=random',
-  };
-
-  const categories = ['python', 'github', 'react', 'javascript', 'git', 'redux'];
-
-  const threadCategory = ['python'];
+  const dispatch = useDispatch();
+  const {
+    threads = [],
+    users = [],
+    authUser,
+    threadCategory = [],
+    threadCategories = [],
+  } = useSelector((states) => states);
 
   const threadLists = threads.map((thread) => ({
     ...thread,
     user: users.find((user) => user.id === thread.ownerId),
     upVotesCount: thread.upVotesBy.length,
     downVotesCount: thread.downVotesBy.length,
-    isUpVote: thread.upVotesBy.includes(authUser.id),
-    isDownVote: thread.downVotesBy.includes(authUser.id),
+    isUpVote: authUser ? thread.upVotesBy.includes(authUser.id) : false,
+    isDownVote: authUser ? thread.downVotesBy.includes(authUser.id) : false,
   }));
+
+  useEffect(() => {
+    dispatch(asyncPopulateUsersThreadsCategories());
+  }, [dispatch]);
 
   return (
     <>
@@ -149,28 +42,34 @@ function ThreadsPage() {
             <div>
               <div className="create-thread-container">
                 <h2 className="page-title">Latest Discussion</h2>
-                <button type="button" className="create-thread" onClick={() => navigate('/threads/new')}>
-                  <FiPlus />
-                  { ' ' }
-                  <span className="create-thread-label">New Thread</span>
-                </button>
+                {
+                  authUser
+                    ? (
+                      <button type="button" className="create-thread" onClick={() => navigate('/threads/new')}>
+                        <FiPlus />
+                        { ' ' }
+                        <span className="create-thread-label">New Thread</span>
+                      </button>
+                    )
+                    : <h4 className="no-login-text-display"><Link to="/login">Login to explore</Link></h4>
+                }
               </div>
               <ThreadLists threads={threadLists} threadTruncate />
             </div>
           </div>
           <aside className="thread-side-contents">
             <div className="profile-content">
-              <UserProfile {...authUser} />
+              {authUser && <UserProfile {...authUser} />}
             </div>
             <h4 className="find-categories">Find Categories</h4>
-            <Input type="text" placeholder="Search category" />
+            <Input type="text" placeholder="Search category" onChange={() => {}} value="" />
             <div className="categories-content">
               <ThreadCategoryContainer>
-                {categories.map((category) => (
+                {threadCategories.map((category) => (
                   <ThreadCategory
                     label={category}
                     isActive={threadCategory.includes(category)}
-                    key={category}
+                    key={makeid(6)}
                   />
                 ))}
               </ThreadCategoryContainer>

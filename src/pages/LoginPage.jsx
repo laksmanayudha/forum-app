@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import {
   FormContainer,
   FormSubmit,
@@ -12,15 +12,23 @@ import useInput from '../hooks/useInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
 
 function LoginPage() {
+  const { authUser } = useSelector((states) => states);
   const [email, setEmail] = useInput();
   const [password, setPassword] = useInput();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onLogin = (e) => {
     e.preventDefault();
-    dispatch(asyncSetAuthUser({ email, password }));
-    navigate('/');
+    dispatch(asyncSetAuthUser({ email, password }))
+      .then(({ error }) => {
+        if (!error) {
+          navigate('/');
+        }
+      });
   };
+
+  if (authUser) return <Navigate to="/" />;
+
   return (
     <section className="login-page page">
       <div className="login-page__hero">
@@ -36,13 +44,15 @@ function LoginPage() {
           </header>
           <FormContainer>
             <Form onSubmit={onLogin}>
-              <Input type="text" placeholder="Your Email" onChange={setEmail} />
-              <Input type="password" placeholder="Your Password" onChange={setPassword} />
+              <Input type="email" placeholder="Your Email" onChange={setEmail} value={email} />
+              <Input type="password" placeholder="Your Password" onChange={setPassword} value={password} />
               <FormSubmit label="Login" />
             </Form>
             <p className="dont-have-account">
               Don&lsquo;t have an account?
-              <span className="to-register"> register</span>
+              <Link to="/register">
+                <span className="to-register"> register</span>
+              </Link>
             </p>
           </FormContainer>
         </article>

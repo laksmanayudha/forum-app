@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 import { UserProfile } from '../UserProfile';
 import { Votes } from '../Votes';
 import { postedAt } from '../../utils';
@@ -26,7 +27,7 @@ function CommentItem({
         />
         <div className="comment-content">
           <div className="content">
-            {content}
+            {parser(content)}
           </div>
           <div className="created-at">
             <span>{postedAt(createdAt)}</span>

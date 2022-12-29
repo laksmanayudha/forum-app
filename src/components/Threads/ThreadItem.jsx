@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 import { Link } from 'react-router-dom';
 import ThreadCategory from './ThreadCategory';
 import ThreadCategoryContainer from './ThreadCategoryContainer';
@@ -36,7 +37,7 @@ function ThreadItem({
             <Link to="/">{ title }</Link>
           </h4>
           <div className={`${truncate ? 'thread--truncate' : ''}`}>
-            { body }
+            { parser(body) }
           </div>
         </div>
         <div className="thread__categories">

@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
 const ActionType = {
@@ -35,17 +36,20 @@ function setVoteThread(vote) {
 
 function asyncAddThread({ title, body, category = '' }) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const thread = await api.createThread({ title, body, category });
       dispatch(addThreadActionCreator(thread));
     } catch (error) {
       alert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncUpvoteThread(threadId) {
   return async (dispatch, getState) => {
+    dispatch(showLoading());
     const { authUser } = getState();
     dispatch(setVoteThread({ threadId, voteType: 1, userId: authUser.id }));
     try {
@@ -54,11 +58,13 @@ function asyncUpvoteThread(threadId) {
       alert(error.message);
       dispatch(setVoteThread({ threadId, voteType: 0, userId: authUser.id }));
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncDownvoteThread(threadId) {
   return async (dispatch, getState) => {
+    dispatch(showLoading());
     const { authUser } = getState();
     dispatch(setVoteThread({ threadId, voteType: -1, userId: authUser.id }));
     try {
@@ -67,11 +73,13 @@ function asyncDownvoteThread(threadId) {
       alert(error.message);
       dispatch(setVoteThread({ threadId, voteType: 0, userId: authUser.id }));
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncNeutralvoteThread(threadId) {
   return async (dispatch, getState) => {
+    dispatch(showLoading());
     const { authUser, threads } = getState();
     const selectedThread = threads.find((thread) => thread.id === threadId);
     const voteType = selectedThread.downVotesBy.includes(authUser.id) ? -1 : 1;
@@ -82,6 +90,7 @@ function asyncNeutralvoteThread(threadId) {
       alert(error.message);
       dispatch(setVoteThread({ threadId, voteType, userId: authUser.id }));
     }
+    dispatch(hideLoading());
   };
 }
 

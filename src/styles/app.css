@@ -86,6 +86,11 @@ small {
   margin-left: 195px;
 }
 
+.no-login-text-display a {
+  color: var(--blue-1);
+  text-decoration: underline;
+}
+
 @media (max-width: 1286px) {
   .page--aside {
     margin-left: 115px;

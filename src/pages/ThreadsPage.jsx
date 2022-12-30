@@ -32,6 +32,7 @@ function ThreadsPage() {
     if (votesType === 'neutralVotes') dispatch(asyncNeutralvoteThread(threadId));
   };
   const onCategoryClick = (active, category) => dispatch(setThreadCategoryActionCreator(category));
+
   const filterThreads = () => {
     let threadLists = threadCategory.length > 0
       ? threads.filter((thread) => threadCategory.includes(thread.category)) : threads;
@@ -53,7 +54,9 @@ function ThreadsPage() {
   }, [dispatch]);
 
   const threadLists = filterThreads();
-  const categories = threadCategories.filter((category) => category.includes(ctgSearch));
+  const categories = threadCategories.filter(
+    (category) => category.includes(ctgSearch) && !threadCategory.includes(category),
+  );
   return (
     <>
       <section className="threads-page page page--aside">
@@ -85,10 +88,19 @@ function ThreadsPage() {
             <Input type="text" placeholder="Search category" onChange={setCtgSearch} value={ctgSearch} />
             <div className="categories-content">
               <ThreadCategoryContainer>
+                {threadCategory.map((category) => (
+                  <ThreadCategory
+                    label={category}
+                    key={makeid(6)}
+                    action={onCategoryClick}
+                    active
+                  />
+                ))}
+              </ThreadCategoryContainer>
+              <ThreadCategoryContainer>
                 {categories.map((category) => (
                   <ThreadCategory
                     label={category}
-                    active={threadCategory.includes(category)}
                     key={makeid(6)}
                     action={onCategoryClick}
                   />

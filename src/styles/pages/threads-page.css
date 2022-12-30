@@ -28,6 +28,9 @@
 .categories-content {
   /* min-width: 250px; */
   max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .find-categories {

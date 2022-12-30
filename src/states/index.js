@@ -7,6 +7,7 @@ import threadsReducer from './threads/reducer';
 import usersReducer from './users/reducer';
 import threadDetailReducer from './threadDetail/reducer';
 import threadCategoriesReducer from './threadCategories/reducer';
+import threadCategoryReducer from './threadCategory/reducer';
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     threadDetail: threadDetailReducer,
     leaderboards: leaderboardsReducer,
     threadCategories: threadCategoriesReducer,
+    threadCategory: threadCategoryReducer,
     loadingBar: loadingBarReducer,
   },
 });

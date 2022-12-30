@@ -1,21 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ThreadCategory({ label, active }) {
+function ThreadCategory({ label, active, action }) {
   return (
-    <span className={`thread-category ${active ? 'category--active' : ''}`}>
+    <button
+      className={`thread-category ${active ? 'category--active' : ''}`}
+      type="button"
+      onClick={() => action(active, label)}
+    >
       { label }
-    </span>
+    </button>
   );
 }
 
 ThreadCategory.propTypes = {
   label: PropTypes.string.isRequired,
+  action: PropTypes.func,
   active: PropTypes.bool,
 };
 
 ThreadCategory.defaultProps = {
   active: false,
+  action: () => {},
 };
 
 export default ThreadCategory;

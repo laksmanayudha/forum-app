@@ -77,6 +77,7 @@
 
 /* category */
 .thread-categories-container {
+  /* min-width: 100%; */
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
@@ -102,6 +103,6 @@
 
 @media (min-width: 1024px) {
   .thread-lists {
-    min-width: 640px !important;
+    min-width: 600px !important;
   }
 }

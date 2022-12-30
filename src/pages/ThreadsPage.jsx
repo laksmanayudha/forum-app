@@ -29,6 +29,10 @@ function ThreadsPage() {
     if (votesType === 'neutralVotes') dispatch(asyncNeutralvoteThread(threadId));
   };
 
+  useEffect(() => {
+    dispatch(asyncPopulateUsersThreadsCategories());
+  }, [dispatch]);
+
   const threadLists = threads.map((thread) => ({
     ...thread,
     user: users.find((user) => user.id === thread.ownerId) || {},
@@ -39,10 +43,6 @@ function ThreadsPage() {
     detailPage: `/thread/${thread.id}`,
     onVotes,
   }));
-
-  useEffect(() => {
-    dispatch(asyncPopulateUsersThreadsCategories());
-  }, [dispatch]);
 
   return (
     <>

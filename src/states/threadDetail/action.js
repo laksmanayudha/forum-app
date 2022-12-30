@@ -121,6 +121,7 @@ function asyncUpvoteComment(threadId, commentId) {
     dispatch(showLoading());
     const { authUser } = getState();
     dispatch(setVoteThreadDetailCommentActionCreator({
+      commentId,
       threadId,
       voteType: 1,
       userId: authUser.id,
@@ -130,6 +131,7 @@ function asyncUpvoteComment(threadId, commentId) {
     } catch (error) {
       alert(error.message);
       dispatch(setVoteThreadDetailCommentActionCreator({
+        commentId,
         threadId,
         voteType: 0,
         userId: authUser.id,
@@ -144,6 +146,7 @@ function asyncDownvoteComment(threadId, commentId) {
     dispatch(showLoading());
     const { authUser } = getState();
     dispatch(setVoteThreadDetailCommentActionCreator({
+      commentId,
       threadId,
       voteType: -1,
       userId: authUser.id,
@@ -153,6 +156,7 @@ function asyncDownvoteComment(threadId, commentId) {
     } catch (error) {
       alert(error.message);
       dispatch(setVoteThreadDetailCommentActionCreator({
+        commentId,
         threadId,
         voteType: 0,
         userId: authUser.id,
@@ -169,6 +173,7 @@ function asyncNeutralvoteComment(threadId, commentId) {
     const selectedComment = threadDetail.comments.find((comment) => comment.id === commentId);
     const voteType = selectedComment.downVotesBy.includes(authUser.id) ? -1 : 1;
     dispatch(setVoteThreadDetailCommentActionCreator({
+      commentId,
       threadId,
       voteType: 0,
       userId: authUser.id,
@@ -178,6 +183,7 @@ function asyncNeutralvoteComment(threadId, commentId) {
     } catch (error) {
       alert(error.message);
       dispatch(setVoteThreadDetailCommentActionCreator({
+        commentId,
         threadId,
         voteType,
         userId: authUser.id,

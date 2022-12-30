@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { IoTriangleOutline } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 
@@ -10,18 +10,21 @@ function Votes({
   onVotes,
   id,
 }) {
-  const [votesType, setVotesType] = useState(() => {
-    if (isDownVote) return 'downVotes';
-    if (isUpVote) return 'upVotes';
-    return 'neutralVotes';
-  });
   const onVotesChange = (type) => {
-    if (votesType !== type) setVotesType(type);
-    else setVotesType('neutralVotes');
+    if (!isUpVote && !isDownVote) {
+      onVotes(type, id);
+      return;
+    }
+    if (isUpVote && (type === 'downVotes')) {
+      onVotes('downVotes', id);
+      return;
+    }
+    if (isDownVote && (type === 'upVotes')) {
+      onVotes('upVotes', id);
+      return;
+    }
+    onVotes('neutralVotes', id);
   };
-  useEffect(() => {
-    onVotes(votesType, id);
-  }, [votesType]);
 
   return (
     <div className="votes">

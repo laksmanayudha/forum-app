@@ -70,9 +70,9 @@ function ThreadItem({
 }
 
 const userShape = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  avatar: PropTypes.string,
 };
 
 ThreadItem.propTypes = {

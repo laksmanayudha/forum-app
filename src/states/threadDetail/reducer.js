@@ -66,7 +66,7 @@ function threadDetailReducer(threadDetail = null, action = {}) {
               };
             }
           }
-          return threadDetail.comments;
+          return comment;
         }),
       };
     default:

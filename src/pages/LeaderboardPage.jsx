@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import withSidebar from '../hoc/withSidebar';
 import { Leaderboards } from '../components/Leaderboards';
-// import PropTypes from 'prop-types';
 import '../styles/pages/leaderboards-page.css';
 import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
 

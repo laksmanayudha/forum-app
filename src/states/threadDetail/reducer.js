@@ -45,7 +45,8 @@ function threadDetailReducer(threadDetail = null, action = {}) {
             if (action.payload.vote.voteType === 1) {
               return {
                 ...comment,
-                upVotesBy: [...comment.upVotesBy, action.payload.vote.userId],
+                upVotesBy: !comment.upVotesBy.includes(action.payload.vote.userId)
+                  ? [...comment.upVotesBy, action.payload.vote.userId] : [...comment.upVotesBy],
                 downVotesBy: comment.downVotesBy.filter((id) => id !== action.payload.vote.userId),
               };
             }
@@ -54,7 +55,8 @@ function threadDetailReducer(threadDetail = null, action = {}) {
               return {
                 ...comment,
                 upVotesBy: comment.upVotesBy.filter((id) => id !== action.payload.vote.userId),
-                downVotesBy: [...comment.downVotesBy, action.payload.vote.userId],
+                downVotesBy: !comment.downVotesBy.includes(action.payload.vote.userId)
+                  ? [...comment.downVotesBy, action.payload.vote.userId] : [...comment.downVotesBy],
               };
             }
 

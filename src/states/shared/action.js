@@ -24,7 +24,7 @@ function asyncPopulateUsersThreadsCategories() {
 
 function asyncPopulateThreadDetailAndThreads(threadId) {
   return async (dispatch) => {
-    dispatch(showLoading);
+    dispatch(showLoading());
     try {
       const threads = await api.getAllThreads();
       const threadDetail = await api.getThreadDetail(threadId);
@@ -37,14 +37,7 @@ function asyncPopulateThreadDetailAndThreads(threadId) {
   };
 }
 
-function asyncPopulateUserDetailAndThreads() {
-  return async () => {
-
-  };
-}
-
 export {
   asyncPopulateUsersThreadsCategories,
-  asyncPopulateUserDetailAndThreads,
   asyncPopulateThreadDetailAndThreads,
 };

@@ -23,6 +23,7 @@
         "no-undef": "off",
         "import/prefer-default-export": "off",
         "react/jsx-props-no-spreading": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "react/jsx-filename-extension": "off"
     }
 }

@@ -3,6 +3,10 @@
 [Figma](
 https://www.figma.com/file/mTQaziKGrmVoVjFooYxo7I/dicoding_forumApp_submissonOne?node-id=0%3A1&t=btb9RYsMPhw6rgd9-1) 
 
+# Deployed App
+
+[ForumApp](https://forum-app-mu.vercel.app/)
+
 # Project Details
 Forum App website using React.js with Redux.
 

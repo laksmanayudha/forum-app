@@ -5,6 +5,7 @@ function useInput() {
   const onInputChange = (value) => {
     setInput(value);
   };
+
   return [input, onInputChange];
 }
 

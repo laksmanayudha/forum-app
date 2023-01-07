@@ -2,73 +2,39 @@
 
 [Figma](
 https://www.figma.com/file/mTQaziKGrmVoVjFooYxo7I/dicoding_forumApp_submissonOne?node-id=0%3A1&t=btb9RYsMPhw6rgd9-1) 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Details
+Forum App website using React.js with Redux.
 
-## Available Scripts
+This project implement automation testing using Jest, RTL, and Cypress. Also using storybook for Component usage and documentation.
 
-In the project directory, you can run:
+This project using CI/CD with GitHub Action and Vercel.
 
-### `npm start`
+For testing purpose use ==npm run test== then choose option to run all tests, and use ==npm run e2e== to run end to end test with Cypress.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Reducer Function Test
+The test file available in each state folder. Tested reducer:
+- All states reducer
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Thunk Function Test
+The test file available in shared and threads state folder. Tested thunk:
+- asyncAddThread
+- asyncUpvoteThread
+- asyncPopulateUsersThreadsCategories
+- asyncPopulateThreadDetailAndThreads
 
-### `npm test`
+# React Component Test
+The test file available in pages and each components folder. Tested component:
+- LoginPage
+- RegisterPage
+- Votes
+- ThreadCategory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# End to End Test
+- Application login flow in /cypress/e2e/login.cy.js file
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Component Stories
+This stories available in /src/stories folder
+- ThreadItem
+- ThreadCategory
+- UserProfile

@@ -14,8 +14,11 @@ function ThreadCategory({ label, active, action }) {
 }
 
 ThreadCategory.propTypes = {
+  /** Category name of the thread */
   label: PropTypes.string.isRequired,
+  /** A function that called when category is clicked */
   action: PropTypes.func,
+  /** Indicate that category have been selected */
   active: PropTypes.bool,
 };
 

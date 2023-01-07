@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { FormSubmit, Textarea, Form } from '../components/Form';
 import withSidebar from '../hoc/withSidebar';
-import ThreadItem from '../components/Threads/ThreadItem';
+import { ThreadItem } from '../components/Threads';
 import { UserProfile } from '../components/UserProfile';
 import '../styles/pages/thread-detail-page.css';
 import { CommentsBranch, CommentsLists } from '../components/Comments';

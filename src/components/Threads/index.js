@@ -1,3 +1,4 @@
+import ThreadItem from './ThreadItem';
 import ThreadLists from './ThreadLists';
 import ThreadCategoryContainer from './ThreadCategoryContainer';
 import ThreadCategory from './ThreadCategory';
@@ -7,4 +8,5 @@ export {
   ThreadLists,
   ThreadCategoryContainer,
   ThreadCategory,
+  ThreadItem,
 };

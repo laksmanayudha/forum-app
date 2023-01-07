@@ -11,7 +11,7 @@ import '@testing-library/jest-dom';
 import ThreadCategory from './ThreadCategory';
 
 describe('ThreadCategory Component', () => {
-  it('should handle user click correctly', async () => {
+  it('should call action function when user clicked', async () => {
     // arrange
     const action = jest.fn();
     render(<ThreadCategory label="categoryLabel" active={false} action={action} />);

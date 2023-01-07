@@ -2,6 +2,7 @@
  * test scenario for Votes Component
  *
  * should handle correctly vote type when clicked
+ * should show indication when actived
  */
 import React from 'react';
 import { render } from '@testing-library/react';
@@ -29,9 +30,27 @@ describe('Votes Component', () => {
     await userEvent.click(upVotesButton);
     // assert
     expect(onVotes).toHaveBeenCalledWith('upVotes', 'test-id');
+
     // action: down votes click
     await userEvent.click(downVotesButton);
     // assert
     expect(onVotes).toHaveBeenCalledWith('downVotes', 'test-id');
+  });
+
+  it('should show indication when active', async () => {
+    // arrange
+    const { container } = render(
+      <Votes
+        upVotesCount={1}
+        downVotesCount={1}
+        isDownVote
+        isUpVote={false}
+        onVotes={() => {}}
+        id="test-id"
+      />,
+    );
+    const downVotes = container.querySelector('.down-votes');
+    // assert
+    expect(downVotes.getAttribute('class')).toMatch(/votes--voted/gi);
   });
 });

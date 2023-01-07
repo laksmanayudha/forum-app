@@ -18,8 +18,11 @@ UserProfile.defaultProps = {
 };
 
 UserProfile.propTypes = {
+  /** User profile image */
   avatar: PropTypes.string.isRequired,
+  /** User's name */
   name: PropTypes.string.isRequired,
+  /** User's email */
   email: PropTypes.string,
 };
 

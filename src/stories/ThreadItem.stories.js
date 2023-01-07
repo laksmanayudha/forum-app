@@ -17,7 +17,7 @@ const TemplateStory = (args) => (
 
 const threadData = {
   id: 'thread-id',
-  title: 'Pengalaman Belajar React di Dicoding',
+  title: 'Bagaimana pengalaman belajar kelas React di Dicoding? Apakah mudah ataukah sulit?',
   body: 'Menurut teman-teman, bagaimana pengalaman belajar kelas React di Dicoding? Apakah mudah ataukah sulit? Yuk, ceritakan di sini. Menurut teman-teman, bagaimana pengalaman belajar kelas React di Dicoding? Apakah mudah ataukah sulit? Yuk, ceritakan di sini.',
   category: 'React',
   createdAt: '2023-06-21T07:00:00.000Z',

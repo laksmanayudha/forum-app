@@ -10,7 +10,7 @@ This project implement automation testing using Jest, RTL, and Cypress. Also usi
 
 This project using CI/CD with GitHub Action and Vercel.
 
-For testing purpose use <mark>npm run test</mark> then choose option to run all tests, and use <mark>npm run e2e</mark> to run end to end test with Cypress.
+For testing purpose use `npm run test` then choose option to run all tests, and use `npm run e2e` to run end to end test with Cypress.
 
 # Reducer Function Test
 The test file available in each state folder. Tested reducer:

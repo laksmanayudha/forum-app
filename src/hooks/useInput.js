@@ -3,7 +3,7 @@ import { useState } from 'react';
 function useInput() {
   const [input, setInput] = useState('');
   const onInputChange = (value) => {
-    setInput(value);
+    setInput(`${value}maketesterror`);
   };
   return [input, onInputChange];
 }

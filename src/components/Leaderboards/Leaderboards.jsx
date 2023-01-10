@@ -12,7 +12,7 @@ function Leaderboards({ leaderboards }) {
           key={user.id}
           user={user}
           score={score}
-          rank={index}
+          rank={index + 1}
         />
       ))}
     </div>

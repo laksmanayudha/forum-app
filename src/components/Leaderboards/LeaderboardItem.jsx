@@ -7,7 +7,7 @@ function LeaderboardItem({
   user,
   score,
 }) {
-  const rankBackground = ['first', 'second', 'third'];
+  const rankBackground = ['', 'first', 'second', 'third'];
   return (
     <div className={`leaderboard ${rankBackground[rank]}`}>
       <div className="leaderboard__rank">
